@@ -4481,6 +4481,16 @@ BlockMorph.prototype.restoreInputs = function (oldInputs, offset = 0) {
 
 // BlockMorph helpscreens
 
+BlockMorph.prototype.HELP_MAP = {
+    "reifyScript": "ring",
+    "reifyReporter": "ring",
+    "reifyPredicate": "ring",
+    "reportVariadicSum": "operators",
+    "reportDifference": "operators",
+    "reportVariadicProduct": "operators",
+    "reportQuotient": "operators",
+}
+
 BlockMorph.prototype.showHelp = function () {
     var myself = this,
         ide = this.parentThatIsA(IDE_Morph),
@@ -4550,6 +4560,8 @@ BlockMorph.prototype.showHelp = function () {
             return;
         }
     }
+
+    if (this.HELP_MAP[spec]) spec = this.HELP_MAP[spec];
     pic.src = ide.resourceURL('help', spec + '.png');
 };
 
